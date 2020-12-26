@@ -1,11 +1,4 @@
-
-
-
-
-
 #binary Tree 
-
-
 class Node:
 
     def __init__(self, data):
