@@ -1,74 +1,81 @@
 
-class Node(object):
+class Link (object):
+  def __init__ (self, data, next = None):
+    self.data = data
+    self.next = next
 
-    def __init__(self, data=None, next_node=None):
-        self.data = data
-        self.next_node = next_node
+class LinkedList (object):
+  def __init__ (self):
+    self.first = None
 
-    def get_data(self):
-        return self.data
+  # add data at the beginning
+  def insert_first (self, data):
+    new_link = Link (data)
 
-    def get_next(self):
-        return self.next_node
+    new_link.next = self.first
+    self.first = new_link
 
-    def set_next(self, new_next):
-        self.next_node = new_next
+  # add data at the end
+  def insert_last (self, data):
+    new_link = Link (data)
 
-class LinkedList(object):
-    def __init__(self, head=None):
-        self.head = head
+    current = self.first
+    if (current == None):
+      self.first = new_link
+      return
 
-    def insert(self, data):
-    new_node = Node(data)
-    new_node.set_next(self.head)
-    self.head = new_node
+    while (current.next != None):
+      current = current.next
 
+    current.next = new_link
 
-    def size(self):
-    current = self.head
-    count = 0
-    while current:
-        count += 1
-        current = current.get_next()
-    return count
+  # find data in a linked list
+  def find_link (self, data):
+    current = self.first
 
+    if (current == None):
+      return None
 
-    def search(self, data):
-    current = self.head
-    found = False
-    while current and found is False:
-        if current.get_data() == data:
-            found = True
-        else:
-            current = current.get_next()
-    if current is None:
-        raise ValueError("Data not in list")
+    while (current.data != data):
+      if (current.next == None):
+        return None
+      else:
+        current = current.next
+
+    return current
+
+  # delete link with given data
+  def delete_link (self, data):
+    previous = self.first
+    current = self.first
+
+    if (current == None):
+      return None
+
+    while (current.data != data):
+      if (current.next == None):
+        return None
+      else:
+        previous = current
+        current = current.next
+
+    if (current == self.first):
+      self.first = self.first.next
+    else:
+      previous.next = current.next
+
     return current
 
 
-    def delete(self, data):
-    current = self.head
-    previous = None
-    found = False
-    while current and found is False:
-        if current.get_data() == data:
-            found = True
-        else:
-            previous = current
-            current = current.get_next()
-    if current is None:
-        raise ValueError("Data not in list")
-    if previous is None:
-        self.head = current.get_next()
-    else:
-        previous.set_next(current.get_next())
 
+#* Application of Linked Lists
+#  - implementation of Stacks and Queues in constant time
+ # - Denote connectivity of vertices in a graph - adjacency list
+ # - Sparse matrix representation 
+  #- Compact Hash Table
+  #- Dynamic memory allocation - linked list of free blocks
 
-
-
-
-
-
-
-
+#* Doubly Linked List
+ # - Link has now next and previous pointers
+  #- traverse both ways in the linked list
 
