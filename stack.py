@@ -1,55 +1,44 @@
 class Stack (object):
-    def __init__ (self):
-        self.stack = []
+  def __init__ (self):
+    self.stack = []
 
-# add an item to the top of the stack
-    def push (self, item):
-        self.stack.append (item)
+  # add an item to the top of the stack
+  def push (self, item):
+    self.stack.append ( item )
 
   # remove an item from the top of the stack
-    def pop (self):
-        return self.stack.pop()
+  def pop (self):
+    return self.stack.pop()
 
-  # check the item on the top of the stack
-    def peek (self):
-        return self.stack[-1]
+  # check what item is on top of the stack without removing it
+  def peek (self):
+    return self.stack[len(self.stack) - 1]
 
-  # check if the stack is empty
-    def is_empty (self):
-        return (len(self.stack) == 0)
+  # check if a stack is empty
+  def isEmpty (self):
+    return (len(self.stack) == 0)
 
   # return the number of elements in the stack
-    def size (self):
-        return (len (self.stack))
+  def size (self):
+    return (len(self.stack))
+# a different implementation of the Stack class
+class Stack (object):
+  def __init__ (self):
+    self.stack = []
 
-from collections import deque
- 
-stack = deque()
- 
-# append() function to push
-# element in the stack
-stack.append('a')
-stack.append('b')
-stack.append('c')
- 
-print('Initial stack:')
-print(stack)
- 
-# pop() fucntion to pop
-# element from stack in 
-# LIFO order
-print('\nElements poped from stack:')
-print(stack.pop())
-print(stack.pop())
-print(stack.pop())
- 
-print('\nStack after elements are poped:')
-print(stack)
- 
-# uncommenting print(stack.pop())  
-# will cause an IndexError 
-# as the stack is now empty
+  def push (self, item):
+    self.stack.insert (0, item )
 
+  def pop (self):
+    return self.stack.pop(0)
 
+  def peek (self):
+    return self.stack[0]
+
+  def isEmpty (self):
+    return (len(self.stack) == 0)
+
+  def size (self):
+    return (len(self.stack))
 
 
