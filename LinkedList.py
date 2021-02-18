@@ -1,38 +1,29 @@
 
-class Link (object):
-  def __init__ (self, data, next = None):
-    self.data = data
-    self.next = next
-
+Linked List
 class LinkedList (object):
   def __init__ (self):
     self.first = None
 
-  # add data at the beginning
-  def insert_first (self, data):
-    new_link = Link (data)
+  def insertFirst (self, data):
+    newLink = Link (data)
+    newLink.next = self.first
+    self.first = newLink
 
-    new_link.next = self.first
-    self.first = new_link
-
-  # add data at the end
-  def insert_last (self, data):
-    new_link = Link (data)
-
+  def insertLast (self, data):
+    newLink = Link (data)
     current = self.first
+
     if (current == None):
-      self.first = new_link
+      self.first = newLink
       return
 
     while (current.next != None):
       current = current.next
 
-    current.next = new_link
+    current.next = newLink
 
-  # find data in a linked list
-  def find_link (self, data):
+  def findLink (self, data):
     current = self.first
-
     if (current == None):
       return None
 
@@ -44,10 +35,9 @@ class LinkedList (object):
 
     return current
 
-  # delete link with given data
-  def delete_link (self, data):
-    previous = self.first
+  def deleteLink (self, data):
     current = self.first
+    previous = self.first
 
     if (current == None):
       return None
@@ -57,7 +47,7 @@ class LinkedList (object):
         return None
       else:
         previous = current
-        current = current.next
+	current = current.next
 
     if (current == self.first):
       self.first = self.first.next
@@ -65,7 +55,6 @@ class LinkedList (object):
       previous.next = current.next
 
     return current
-
 
 
 #* Application of Linked Lists
