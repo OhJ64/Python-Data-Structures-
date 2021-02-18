@@ -1,5 +1,11 @@
 
-Linked List
+
+class Link (object):
+  def __init__ (self, data, next = None):
+    self.data = data
+    self.next = next
+
+
 class LinkedList (object):
   def __init__ (self):
     self.first = None
